@@ -1,0 +1,12 @@
+dependencies: \
+  /Users/m4n3z40/Projects/playground/HelloWorld/node_modules/react-native/React/Inspector/RCTInspector.mm \
+  /Users/m4n3z40/Projects/playground/HelloWorld/node_modules/react-native/React/Inspector/RCTInspector.h \
+  /Users/m4n3z40/Projects/playground/HelloWorld/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/m4n3z40/Projects/playground/HelloWorld/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JavaScriptCore.h \
+  /Users/m4n3z40/Projects/playground/HelloWorld/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JSCWrapper.h \
+  /Users/m4n3z40/Projects/playground/HelloWorld/ios/build/Build/Products/Debug-iphonesimulator/include/jsinspector/InspectorInterfaces.h \
+  /Users/m4n3z40/Projects/playground/HelloWorld/node_modules/react-native/React/Inspector/RCTInspectorPackagerConnection.h \
+  /Users/m4n3z40/Projects/playground/HelloWorld/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/m4n3z40/Projects/playground/HelloWorld/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/m4n3z40/Projects/playground/HelloWorld/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/m4n3z40/Projects/playground/HelloWorld/node_modules/react-native/React/../Libraries/WebSocket/RCTSRWebSocket.h
