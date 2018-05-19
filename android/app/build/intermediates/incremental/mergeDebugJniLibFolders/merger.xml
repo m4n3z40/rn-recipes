@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/m4n3z40/Projects/playground/HelloWorld/android/app/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/Users/m4n3z40/Projects/playground/HelloWorld/android/app/src/debug/jniLibs"/></dataSet></merger>
