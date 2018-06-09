@@ -12,8 +12,9 @@
 .env.test.local
 .env.production.local
 
-# IDEA
+# Editors
 .idea
+.vscode
 
 npm-debug.log*
 yarn-debug.log*
