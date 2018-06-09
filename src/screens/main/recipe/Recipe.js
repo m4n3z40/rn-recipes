@@ -11,45 +11,33 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import { connect } from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { food2ForkKey } from '../../../config';
+import { loadFullRecipe } from '../../../store/recipes';
+import { toggleFavorite } from '../../../store/favorites';
 import { safeUrl, getImageSrc } from '../../../utils';
 import RecipeIngredient from './RecipeIngredient';
-
-const fetchFullRecipe = async recipeId => {
-  const res = await fetch(`https://food2fork.com/api/get?key=${food2ForkKey}&rId=${recipeId}`);
-
-  const {recipe} = await res.json();
-
-  return recipe;
-};
 
 const getIngredients = fullRecipe => fullRecipe.ingredients.map((ingredient, index) => ({
   key: String(index + 1),
   description: ingredient,
 }));
 
-export default class Recipe extends React.Component {
+export class Recipe extends React.Component {
   static navigationOptions = ({navigation}) => {
     const {title} = navigation.state.params;
 
     return {title};
   };
 
-  state = {
-    fullRecipe: null,
-  };
+  componentDidMount() {
+    const { recipe_id } = this.props.navigation.state.params;
 
-  async componentDidMount() {
-    const {recipe_id} = this.props.navigation.state.params;
-
-    const fullRecipe = await fetchFullRecipe(recipe_id);
-
-    this.setState({fullRecipe});
+    this.props.loadFullRecipe(recipe_id);
   }
 
   handleSeeInstructions = async () => {
-    const {source_url} = this.props.navigation.state.params;
+    const { source_url } = this.props.navigation.state.params;
 
     await Linking.openURL(safeUrl(source_url));
   };
@@ -57,9 +45,8 @@ export default class Recipe extends React.Component {
   renderItem = ({item}) => <RecipeIngredient ingredient={item}/>;
 
   render() {
-    const {params: recipe} = this.props.navigation.state;
-    const {fullRecipe} = this.state;
-    const { state: { favorites }, toggleFavorite } = this.props.screenProps;
+    const { params: recipe } = this.props.navigation.state;
+    const { fullRecipe, favorites, toggleFavorite } = this.props;
 
     return (
       <ScrollView style={styles.container}>
@@ -121,6 +108,15 @@ export default class Recipe extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({ recipes, favorites }) => ({
+  fullRecipe: recipes.fullRecipe,
+  favorites: favorites.favorites,
+});
+
+const mapDispatchToProps = { loadFullRecipe, toggleFavorite };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recipe);
 
 const styles = StyleSheet.create({
   container: {

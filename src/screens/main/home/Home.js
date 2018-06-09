@@ -4,41 +4,25 @@ import {
   Text,
   TextInput,
   ActivityIndicator,
-  FlatList,
   StyleSheet,
 } from 'react-native';
-import { food2ForkKey } from '../../../config';
+import { connect } from 'react-redux';
+import { loadRecipes } from '../../../store/recipes';
 import RecipeList from '../../../components/RecipeList';
 
-const fetchRecipes = async q => {
-  const res = await fetch(`https://food2fork.com/api/search?key=${food2ForkKey}&q=${q}`);
-
-  const {recipes} = await res.json();
-
-  return recipes;
-};
-
-export default class Home extends React.Component {
+export class Home extends React.Component {
   static navigationOptions = {
     title: 'Home',
   };
 
-  state = {
-    query: '',
-    recipes: [],
-    loading: false,
-  };
+  state = { query: '' };
 
   handleSearchChange = query => {
-    this.setState({query});
+    this.setState({ query });
   };
 
-  handleSearchSubmit = async () => {
-    this.setState({loading: true});
-
-    const recipes = await fetchRecipes(this.state.query);
-
-    this.setState({loading: false, recipes});
+  handleSearchSubmit = () => {
+    this.props.loadRecipes(this.state.query);
   };
 
   handleSelect = item => {
@@ -46,9 +30,9 @@ export default class Home extends React.Component {
   };
 
   renderResults = () => {
-    const { recipes } = this.state;
+    const { recipes } = this.props;
 
-    return <RecipeList recipes={this.state.recipes} onSelectRecipe={this.handleSelect} />;
+    return <RecipeList recipes={recipes} onSelectRecipe={this.handleSelect} />;
   };
 
   render() {
@@ -65,7 +49,7 @@ export default class Home extends React.Component {
         </View>
         <View style={styles.resultsContainer}>
           {
-            this.state.loading
+            this.props.loading
               ? <ActivityIndicator size="large" color="#000"/>
               : this.renderResults()
           }
@@ -74,6 +58,15 @@ export default class Home extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({ recipes }) => ({
+  recipes: recipes.recipes,
+  loading: recipes.loading,
+});
+
+const mapDispatchToProps = { loadRecipes };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 const styles = StyleSheet.create({
   container: {

@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
+import store from './store';
 import MainStack from './screens/main';
 import FavoritesStack from './screens/favorites';
-import Recipe from './screens/main/recipe/Recipe';
 
 const MainTabs = createBottomTabNavigator({
   Main: MainStack,
@@ -16,35 +17,10 @@ const MainTabs = createBottomTabNavigator({
   },
 });
 
-export default class App extends Component {
-  state = {
-    favorites: new Map(),
-  };
+const App = () => (
+  <Provider store={store}>
+    <MainTabs />
+  </Provider>
+);
 
-  toggleFavorite = recipe => {
-    const { favorites: oldFavorites } = this.state;
-
-    if (oldFavorites.has(recipe.recipe_id)) {
-      oldFavorites.delete(recipe.recipe_id, recipe);
-
-      this.setState({
-        favorites: new Map(oldFavorites),
-      });
-    } else {
-      this.setState({
-        favorites: new Map(oldFavorites.set(recipe.recipe_id, recipe)),
-      });
-    }
-  };
-
-  render() {
-    return (
-      <MainTabs
-        screenProps={{
-          state: this.state,
-          toggleFavorite: this.toggleFavorite
-        }}
-      />
-    );
-  }
-};
+export default App;
