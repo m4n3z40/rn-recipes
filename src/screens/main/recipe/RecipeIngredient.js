@@ -6,15 +6,16 @@ export default function RecipeIngredient({ingredient}) {
     <View style={styles.container}>
       <Text style={styles.bullet}>
         {'\u2022'}
-        <Text style={styles.description}> {ingredient.description}</Text>
       </Text>
+      <Text style={styles.description}> {ingredient.description}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 10
+    paddingTop: 10,
+    flexDirection: 'row',
   },
   bullet: {
     fontWeight: 'bold',

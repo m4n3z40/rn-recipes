@@ -1,9 +1,9 @@
 import { food2ForkKey } from "../config";
 
-const FETCH_RECIPES_START = Symbol('recipes/FETCH_RECIPES_START');
-const FETCH_RECIPES_END = Symbol('recipes/FETCH_RECIPES_END');
-const FETCH_FULL_RECIPE_START = Symbol('recipes/FETCH_FULL_RECIPE_START');
-const FETCH_FULL_RECIPE_END = Symbol('recipes/FETCH_FULL_RECIPE_END');
+const FETCH_RECIPES_START = 'recipes/FETCH_RECIPES_START';
+const FETCH_RECIPES_END = 'recipes/FETCH_RECIPES_END';
+const FETCH_FULL_RECIPE_START = 'recipes/FETCH_FULL_RECIPE_START';
+const FETCH_FULL_RECIPE_END = 'recipes/FETCH_FULL_RECIPE_END';
 
 const fetchRecipes = async q => {
   const res = await fetch(`https://food2fork.com/api/search?key=${food2ForkKey}&q=${q}`);

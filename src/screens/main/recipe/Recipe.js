@@ -57,27 +57,31 @@ export class Recipe extends React.Component {
         <View style={styles.content}>
           <View style={styles.contentHeader}>
             <View>
-              <Text>
-                Score:
+              <View style={{ flexDirection: 'row' }}>
+                <Text>
+                  Score:
+                </Text>
                 <Text style={styles.strongText}>
                   {' '}{Math.round(recipe.social_rank)}%
                 </Text>
-              </Text>
-              <Text style={{ marginTop: 5 }}>
-                Publisher:
+              </View>
+              <View style={{ flexDirection: 'row', marginTop: 5 }}>
+                <Text>
+                  Publisher:
+                </Text>
                 <Text style={styles.strongText}>
                   {' '}{recipe.publisher}
                 </Text>
-              </Text>
+              </View>
             </View>
             <View>
               <TouchableOpacity onPress={() => toggleFavorite(recipe)}>
                 <MaterialIcons
-                  name="favorite"
+                  name={favorites.has(recipe.recipe_id) ? 'favorite' : 'favorite-border'}
                   size={34}
                   color="#f00"
                   style={{ opacity: favorites.has(recipe.recipe_id) ? 1 : 0.6 }}
-                />;
+                />
               </TouchableOpacity>
             </View>
           </View>
