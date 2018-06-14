@@ -2,10 +2,18 @@ import toast from '../utils/toast';
 
 const TOGGLE_FAVORITE = 'favorites/TOGGLE_FAVORITE';
 
-export const toggleFavorite = recipe => ({
-  type: TOGGLE_FAVORITE,
-  recipe,
-});
+export const toggleFavorite = recipe =>
+  (dispatch, getState) => {
+    dispatch({ type: TOGGLE_FAVORITE, recipe });
+
+    const { favorites: { favorites } } = getState();
+
+    if (favorites.has(recipe.recipe_id)) {
+      toast.show('Added to favorites');
+    } else {
+      toast.show('Removed from favorites');
+    }
+  };
 
 const initialState = {
   favorites: new Map(),
@@ -17,12 +25,8 @@ export default function favoritesReducer(state = initialState, action) {
     const { recipe } = action;
 
     if (oldFavorites.has(recipe.recipe_id)) {
-      toast.show('Removed from favorites');
-
       oldFavorites.delete(recipe.recipe_id);
     } else {
-      toast.show('Added to favorites');
-
       oldFavorites.set(recipe.recipe_id, recipe)
     }
 
