@@ -15,7 +15,8 @@
 
 RCT_EXPORT_MODULE(Toast)
 
-- (double)getDuration: (NSString *)duration {
+- (double)getDuration: (NSString *)duration
+{
   if ([duration isEqualToString: @"long"]) {
     return 5.0;
   }
@@ -23,7 +24,8 @@ RCT_EXPORT_MODULE(Toast)
   return 2.0;
 }
 
-- (NSString *)getPosition: (NSString *)position {
+- (NSString *)getPosition: (NSString *)position
+{
   if ([position isEqualToString:@"top"]) {
     return CSToastPositionTop;
   }

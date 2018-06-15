@@ -38,6 +38,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* HelloWorldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HelloWorldTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		3B7A5C07833949C89B23B848 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86AD4FAA47794249BD6068E0 /* SimpleLineIcons.ttf */; };
+		5E154AFB20D385C40070C2AE /* RCPWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E154AFA20D385C40070C2AE /* RCPWebViewManager.m */; };
+		5E154B2420D38B530070C2AE /* RCPWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E154B2320D38B530070C2AE /* RCPWebView.m */; };
 		5E88AA4E20D23143008FFC47 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E88AA4D20D23143008FFC47 /* UIView+Toast.m */; };
 		5E88AA4F20D23143008FFC47 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E88AA4D20D23143008FFC47 /* UIView+Toast.m */; };
 		5E88AA5220D231CC008FFC47 /* RCPToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E88AA5120D231CC008FFC47 /* RCPToast.m */; };
@@ -363,6 +365,10 @@
 		2D02E4901E0B4A5D006451C7 /* HelloWorld-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HelloWorld-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E83A4568484CF89B58B881 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		5E154AF920D385C40070C2AE /* RCPWebViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RCPWebViewManager.h; path = HelloWorld/RCPWebViewManager.h; sourceTree = "<group>"; };
+		5E154AFA20D385C40070C2AE /* RCPWebViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RCPWebViewManager.m; path = HelloWorld/RCPWebViewManager.m; sourceTree = "<group>"; };
+		5E154B2220D38B530070C2AE /* RCPWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RCPWebView.h; path = HelloWorld/RCPWebView.h; sourceTree = "<group>"; };
+		5E154B2320D38B530070C2AE /* RCPWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RCPWebView.m; path = HelloWorld/RCPWebView.m; sourceTree = "<group>"; };
 		5E88AA4C20D23143008FFC47 /* UIView+Toast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "HelloWorld/UIView+Toast.h"; sourceTree = "<group>"; };
 		5E88AA4D20D23143008FFC47 /* UIView+Toast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "HelloWorld/UIView+Toast.m"; sourceTree = "<group>"; };
 		5E88AA5020D231CC008FFC47 /* RCPToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RCPToast.h; path = HelloWorld/RCPToast.h; sourceTree = "<group>"; };
@@ -534,6 +540,10 @@
 				5E88AA4D20D23143008FFC47 /* UIView+Toast.m */,
 				5E88AA5020D231CC008FFC47 /* RCPToast.h */,
 				5E88AA5120D231CC008FFC47 /* RCPToast.m */,
+				5E154AF920D385C40070C2AE /* RCPWebViewManager.h */,
+				5E154AFA20D385C40070C2AE /* RCPWebViewManager.m */,
+				5E154B2220D38B530070C2AE /* RCPWebView.h */,
+				5E154B2320D38B530070C2AE /* RCPWebView.m */,
 			);
 			name = HelloWorld;
 			sourceTree = "<group>";
@@ -1219,6 +1229,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E88AA4E20D23143008FFC47 /* UIView+Toast.m in Sources */,
+				5E154B2420D38B530070C2AE /* RCPWebView.m in Sources */,
+				5E154AFB20D385C40070C2AE /* RCPWebViewManager.m in Sources */,
 				5E88AA5220D231CC008FFC47 /* RCPToast.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,

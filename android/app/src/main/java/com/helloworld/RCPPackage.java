@@ -6,13 +6,16 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class ToastPackage implements ReactPackage {
+public class RCPPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        List<ViewManager> views = new ArrayList<>();
+
+        views.add(new WebView());
+
+        return views;
     }
 
     @Override

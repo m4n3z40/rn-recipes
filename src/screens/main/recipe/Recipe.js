@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,6 @@ import {
   Image,
   ScrollView,
   Button,
-  Linking,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
@@ -23,7 +22,7 @@ const getIngredients = fullRecipe => fullRecipe.ingredients.map((ingredient, ind
   description: ingredient,
 }));
 
-export class Recipe extends React.Component {
+export class Recipe extends Component {
   static navigationOptions = ({navigation}) => {
     const {title} = navigation.state.params;
 
@@ -36,10 +35,14 @@ export class Recipe extends React.Component {
     this.props.loadFullRecipe(recipe_id);
   }
 
-  handleSeeInstructions = async () => {
-    const { source_url } = this.props.navigation.state.params;
+  handleSeeInstructions = () => {
+    const { navigation } = this.props;
+    const { source_url, title } = navigation.state.params;
 
-    await Linking.openURL(safeUrl(source_url));
+    navigation.navigate('Instructions', {
+      src: safeUrl(source_url),
+      title,
+    });
   };
 
   renderItem = ({item}) => <RecipeIngredient ingredient={item}/>;

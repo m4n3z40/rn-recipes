@@ -3,10 +3,12 @@ import { createStackNavigator } from 'react-navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from './home/Home';
 import Recipe from './recipe/Recipe';
+import Instructions from './instructions/Instructions';
 
 const MainStack = createStackNavigator({
   Home,
-  Recipe
+  Recipe,
+  Instructions,
 }, {
   initialRouteName: 'Home',
   navigationOptions: {
