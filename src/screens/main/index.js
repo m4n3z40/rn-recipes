@@ -18,9 +18,8 @@ const MainStack = createStackNavigator({
 
 MainStack.navigationOptions = {
   title: 'Recipes',
-  tabBarIcon({ tintColor }) {
-    return <MaterialCommunityIcons name="food-fork-drink" size={25} color={tintColor} />;
-  }
+  tabBarIcon: ({ tintColor }) =>
+    <MaterialCommunityIcons name="food-fork-drink" size={25} color={tintColor} />,
 };
 
 export default MainStack;

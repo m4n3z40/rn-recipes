@@ -32,9 +32,8 @@ const FavoritesStack = createStackNavigator({
 
 FavoritesStack.navigationOptions = {
   title: 'Favotites',
-  tabBarIcon({ tintColor }) {
-    return <MaterialIcons name="favorite" size={25} color={tintColor} />;
-  }
+  tabBarIcon: ({ tintColor }) =>
+    <MaterialIcons name="favorite" size={25} color={tintColor} />,
 };
 
 export default FavoritesStack;
