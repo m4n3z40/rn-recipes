@@ -9,9 +9,9 @@ export const toggleFavorite = recipe =>
     const { favorites: { favorites } } = getState();
 
     if (favorites.has(recipe.recipe_id)) {
-      toast.show('Added to favorites');
+      toast.show('Added to favorites', { position: 'center' });
     } else {
-      toast.show('Removed from favorites');
+      toast.show('Removed from favorites', { position: 'center' });
     }
   };
 

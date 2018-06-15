@@ -1,8 +1,11 @@
 package com.helloworld;
 
+import android.view.Gravity;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,19 +22,36 @@ public class Toast extends ReactContextBaseJavaModule {
         super(reactContext);
     }
 
-    @Nullable
-    @Override
-    public Map<String, Object> getConstants() {
-        final Map<String, Object> constants = new HashMap<>();
+    private int getDuration(String duration) {
+        switch (duration) {
+            case "long":
+                return android.widget.Toast.LENGTH_LONG;
+            case "short":
+            default:
+                return android.widget.Toast.LENGTH_SHORT;
+        }
+    }
 
-        constants.put("SHORT", android.widget.Toast.LENGTH_SHORT);
-        constants.put("LONG", android.widget.Toast.LENGTH_LONG);
-
-        return  constants;
+    private int getPosition(String position) {
+        switch (position) {
+            case "top":
+                return Gravity.TOP;
+            case "center":
+                return Gravity.CENTER;
+            case "bottom":
+            default:
+                return Gravity.BOTTOM;
+        }
     }
 
     @ReactMethod
-    public void show(String message, int duration) {
-        android.widget.Toast.makeText(getReactApplicationContext(), message, duration).show();
+    public void show(String message, ReadableMap options) {
+        String duration = options.getString("duration");
+        String position = options.getString("position");
+
+        android.widget.Toast toast = android.widget.Toast.makeText(getReactApplicationContext(), message, getDuration(duration));
+
+        toast.setGravity(getPosition(position), 0, 0);
+        toast.show();
     }
 }

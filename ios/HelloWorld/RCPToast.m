@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "React/RCTConvert.h"
 #import "UIView+Toast.h"
 #import "RCPToast.h"
 
@@ -14,23 +15,38 @@
 
 RCT_EXPORT_MODULE(Toast)
 
-RCT_EXPORT_METHOD(show: (NSString *) msg duration: (double) duration)
-{
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [[[[UIApplication sharedApplication] windows] firstObject]
-     makeToast:msg
-     duration:duration
-     position:CSToastPositionBottom
-    ];
-  });
+- (double)getDuration: (NSString *)duration {
+  if ([duration isEqualToString: @"long"]) {
+    return 5.0;
+  }
+  
+  return 2.0;
 }
 
-- (NSDictionary *) constantsToExport
+- (NSString *)getPosition: (NSString *)position {
+  if ([position isEqualToString:@"top"]) {
+    return CSToastPositionTop;
+  }
+  
+  if ([position isEqualToString:@"center"]) {
+    return CSToastPositionCenter;
+  }
+  
+  return CSToastPositionBottom;
+}
+
+RCT_EXPORT_METHOD(show: (NSString *) msg options: (NSDictionary *) options)
 {
-  return @{
-    @"SHORT": @1.5,
-    @"LONG": @5.0
-  };
+  NSString *duration = [RCTConvert NSString:options[@"duration"]];
+  NSString *position = [RCTConvert NSString:options[@"position"]];
+  
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [[[[UIApplication sharedApplication] windows] firstObject]
+     makeToast: msg
+     duration: [self getDuration: duration]
+     position: [self getPosition: position]
+    ];
+  });
 }
 
 @end

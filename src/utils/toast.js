@@ -5,10 +5,12 @@ const { Toast } = NativeModules;
 export default {
   /**
    * @param {string} msg
-   * @param {number} duration
+   * @param {Object} [options]
+   * @param {'short'|'long'} [options.duration]
+   * @param {'top'|'center'|'bottom'} [options.position]
    * @returns {undefined}
    */
-  show: (msg, duration = Toast.SHORT) => Toast.show(msg, duration),
-  SHORT: Toast.SHORT,
-  LONG: Toast.LONG,
+  show: (msg, { duration = 'short', position = 'bottom' } = {}) => {
+    Toast.show(msg, { duration, position });
+  },
 };
