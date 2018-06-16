@@ -20,20 +20,9 @@ public class WebView extends SimpleViewManager<android.webkit.WebView> {
         return "WebView";
     }
 
-    private void dispatchOnLoaded (android.webkit.WebView view) {
-        ReactContext reactContext = (ReactContext) view.getContext();
-
-        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(view.getId(), "loaded", null);
-    }
-
-    @Override
-    public @Nullable Map getExportedCustomDirectEventTypeConstants() {
-        return MapBuilder.builder()
-            .put(
-                "loaded",
-                MapBuilder.of("registrationName", "onLoaded")
-            )
-            .build();
+    @ReactProp(name = "src")
+    public void setSrc(android.webkit.WebView view, String src) {
+        view.loadUrl(src);
     }
 
     @Override
@@ -54,8 +43,19 @@ public class WebView extends SimpleViewManager<android.webkit.WebView> {
         return view;
     }
 
-    @ReactProp(name = "src")
-    public void setSrc(android.webkit.WebView view, String src) {
-        view.loadUrl(src);
+    private void dispatchOnLoaded (android.webkit.WebView view) {
+        ReactContext reactContext = (ReactContext) view.getContext();
+
+        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(view.getId(), "loaded", null);
+    }
+
+    @Override
+    public @Nullable Map getExportedCustomDirectEventTypeConstants() {
+        return MapBuilder.builder()
+            .put(
+                "loaded",
+                MapBuilder.of("registrationName", "onLoaded")
+            )
+            .build();
     }
 }

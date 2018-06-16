@@ -6,7 +6,7 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
-import { getImageSrc } from '../utils';
+import { getImageSrc } from '../utils/url';
 
 export default function RecipeItem({recipe, onSelect}) {
   return (

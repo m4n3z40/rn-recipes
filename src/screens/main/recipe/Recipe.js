@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { loadFullRecipe } from '../../../store/recipes';
 import { toggleFavorite } from '../../../store/favorites';
-import { safeUrl, getImageSrc } from '../../../utils';
+import { safeUrl, getImageSrc } from '../../../utils/url';
 import RecipeIngredient from './RecipeIngredient';
 
 const getIngredients = fullRecipe => fullRecipe.ingredients.map((ingredient, index) => ({
